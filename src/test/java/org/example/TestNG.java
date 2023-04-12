@@ -1,14 +1,13 @@
 package org.example;
 
-import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import java.util.concurrent.TimeUnit;
 
 public class TestNG {
-        public String baseurl="http://www.demo.guru99.com/V4/";
+        public String baseurl="https://www.browserstack.com/";
         public WebDriver driver;
         //String driverpath="C:\\Users\\rabba\\Softwares\\geckodriver-v0.32.2-win-aarch64\\geckodriver.exe";
         //String driverpath="C:\\Users\\rabba\\Softwares\\ChromeDriver\\chromedriver.exe";
@@ -21,27 +20,27 @@ public class TestNG {
                     //System.setProperty("webdriver.chrome.driver",driverpath);
                     //driver = new ChromeDriver();
                     driver.get(baseurl);
+                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+                    driver.manage().window().maximize();
                 }
                 @BeforeMethod
                 public void loginHomepage()
                 {
-                    driver.findElement(By.name("uid")).sendKeys("****");
-                    driver.findElement(By.name("password")).sendKeys("****");
-                    driver.findElement(By.name("btnLogin")).click();
+//                    driver.findElement(By.name("uid")).sendKeys("****");
+//                    driver.findElement(By.name("password")).sendKeys("****");
+//                    driver.findElement(By.name("btnLogin")).click();
+                    System.out.println("in BeforeMethod");
                 }
                 @Test
                 public void verifyHomepage()
                 {
-                    //String ActualURL=driver.getTitle();
-                    System.out.println("Its working in firefox");
-                    //String ExpectedURL="http://www.demo.guru99.com/V4/manager/Managerhomepage.php";
-                    //Assert.assertEquals(ActualURL,ExpectedURL);
+                    String Actual=driver.getTitle();
+                    String Expected="Most Reliable App & Cross Browser Testing Platform | BrowserStack";
+                    Assert.assertEquals(Actual,Expected);
                 }
-
                 @AfterTest
                 public void closeBrowser()
                 {
-                    //driver.close();
                     driver.quit();
                 }
 }
