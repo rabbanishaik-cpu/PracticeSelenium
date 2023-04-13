@@ -1,3 +1,4 @@
+//Currently not working, file operations are not working
 package org.example;
 
 import org.openqa.selenium.OutputType;
@@ -13,7 +14,7 @@ public class ScreenShot{
         driver.get("https://www.techlistic.com/p/selenium-practice-form.html");
         driver.manage().window().maximize();
         //Convert Webdriver Object to takesScreenShot
-        TakesScreenshot SS = ((TakesScreenshot)driver);
+        TakesScreenshot SS = (TakesScreenshot)driver;
         //call getScreenShotAs method to create img
         File SrcSS = SS.getScreenshotAs(OutputType.FILE);
         File DstSS = new File("C:\\Users\\rabba\\OneDrive\\Pictures\\SeleniumSS");

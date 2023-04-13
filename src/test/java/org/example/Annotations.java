@@ -34,11 +34,11 @@ public class Annotations {
     public void BeforeTest(){
         System.out.println("Hi BeforeTest here!");
     }
-    @Test
+    @Test(priority = 1)
     public void Test1(){
         System.out.println("Hi Test 1 here!");
     }
-    @Test
+    @Test(priority = 0)
     public void Test2(){
         System.out.println("Hi Test 2 here!");
     }

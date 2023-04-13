@@ -1,6 +1,7 @@
 package org.example;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -36,17 +37,25 @@ public class WebElementCommands {
         //isEnabled - checks whether element is enabled or not
         WebElement button = driver.findElement(By.id("sharing-button-Blog1-byline-3077692503353518311"));
         boolean isButtonEnabled = button.isEnabled();
-        if (isButtonEnabled)
-            button.click();
+        if (isButtonEnabled) {
+            //button.click();
+            System.out.println("Share Button is enabled");
+        }
         else
             System.out.println("Share Button is not enabled");
+
+        //Scrolling
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor)driver;
+        javascriptExecutor.executeScript("javascript:window.scrollBy(0,500)");
 
         //Selecting DropDowns
         WebElement dropDown = driver.findElement(By.id("continents"));
         Select item = new Select(dropDown);
-        item.selectByIndex(1);
+        item.selectByIndex(2);
         WebElement printSelectedCont = driver.findElement((By.name("continents")));
         String continentName = printSelectedCont.getText();
         System.out.println(continentName);
+
+        driver.quit();
     }
 }
