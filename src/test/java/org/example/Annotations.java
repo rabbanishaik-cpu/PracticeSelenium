@@ -34,11 +34,17 @@ public class Annotations {
     public void BeforeTest(){
         System.out.println("Hi BeforeTest here!");
     }
-    @Test(priority = 1)
+
+    //timeOut Attribute is used to set time for the test case, if the teat does not run in specified time, it will get
+    //skipped. time in milliseconds
+    //using enabled = false we can skip the testCase
+    @Test(priority = 0,timeOut = 5000, enabled = false)
     public void Test1(){
         System.out.println("Hi Test 1 here!");
     }
-    @Test(priority = 0)
+
+    //using InvocationCount = 2 we can run a test multiple times
+    @Test(priority = 1,invocationCount = 1)
     public void Test2(){
         System.out.println("Hi Test 2 here!");
     }

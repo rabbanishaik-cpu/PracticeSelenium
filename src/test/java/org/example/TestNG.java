@@ -1,6 +1,8 @@
 package org.example;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -9,6 +11,7 @@ import java.util.concurrent.TimeUnit;
 public class TestNG {
         public String baseurl="https://www.browserstack.com/";
         public WebDriver driver;
+        public ChromeOptions chromeOptions;
         //String driverpath="C:\\Users\\rabba\\Softwares\\geckodriver-v0.32.2-win-aarch64\\geckodriver.exe";
         //String driverpath="C:\\Users\\rabba\\Softwares\\ChromeDriver\\chromedriver.exe";
         @BeforeTest
@@ -16,7 +19,12 @@ public class TestNG {
                 {
                     System.out.println("Launching the Web application");
                     //System.setProperty("webdriver.gecko.driver",driverpath);
-                    driver=new FirefoxDriver();
+
+                    chromeOptions = new ChromeOptions();
+                    chromeOptions.addArguments("--remote-allow-origins=*");
+                    driver = new ChromeDriver(chromeOptions);
+
+                    //driver=new FirefoxDriver();
                     //System.setProperty("webdriver.chrome.driver",driverpath);
                     //driver = new ChromeDriver();
                     driver.get(baseurl);
