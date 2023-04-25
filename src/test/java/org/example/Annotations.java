@@ -13,8 +13,10 @@ package org.example;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.SkipException;
 import org.testng.annotations.*;
 
+import javax.sound.midi.Soundbank;
 import java.util.concurrent.TimeUnit;
 
 public class Annotations {
@@ -47,6 +49,16 @@ public class Annotations {
     @Test(priority = 1,invocationCount = 1)
     public void Test2(){
         System.out.println("Hi Test 2 here!");
+    }
+    //conditional skip
+    @Test
+    public void test3(){
+        boolean skipTest = false;
+        if (!skipTest){
+            System.out.println("Test is Skipped");
+            throw new SkipException("Skipping this exception");
+        }
+        System.out.println("Test is executed");
     }
     @AfterTest
     public void AfterTest(){
