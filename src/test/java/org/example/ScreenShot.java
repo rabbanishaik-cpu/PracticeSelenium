@@ -1,4 +1,3 @@
-//Currently not working, file operations are not working
 package org.example;
 
 import org.apache.commons.io.FileUtils;

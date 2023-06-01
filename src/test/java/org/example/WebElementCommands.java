@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class WebElementCommands {
@@ -55,6 +56,12 @@ public class WebElementCommands {
         WebElement printSelectedCont = driver.findElement((By.name("continents")));
         String continentName = printSelectedCont.getText();
         System.out.println(continentName);
+
+        //get all options in dropdown
+        List<WebElement> allOptions=item.getOptions();
+        for (WebElement values:allOptions){
+            System.out.println(values.getText());
+        }
 
         driver.quit();
     }

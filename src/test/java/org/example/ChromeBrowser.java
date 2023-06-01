@@ -10,6 +10,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class ChromeBrowser {
     WebDriver driver;
     @BeforeTest
@@ -19,14 +21,19 @@ public class ChromeBrowser {
 
         driver = new ChromeDriver(options);
         driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
     }
     @Test
     public void logIn() throws Exception {
         try {
-//            driver.findElement(By.name("username")).sendKeys("Admin");
-//            driver.findElement(By.name("password")).sendKeys("admin123");
-//            driver.findElement(By.xpath("/html/body/div/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button")).click();
+
+            //relative xpath
+            driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Admin");
+            driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
+            //driver.findElement(By.xpath("/html/body/div/div[1]/div/div[1]/div/div[2]/div[2]/form/div[3]/button")).click();
+
+            driver.findElement(By.xpath("//button[@type='submit']")).click();
             String ExpectedTitle = "OrangeHRM";
             String nextPageTitle = driver.getTitle();
             Assert.assertEquals(nextPageTitle, ExpectedTitle);

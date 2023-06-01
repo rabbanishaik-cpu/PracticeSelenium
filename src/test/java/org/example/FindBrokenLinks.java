@@ -1,5 +1,5 @@
 //NOTES
-//We use List to store all links of the website.
+//We use List to store all links of the website using BY.tagName("a");
 //Iterator to iterate through the list,
 // iterator.next().getAttribute("href");
 // create object for URL and pass link as argument
