@@ -17,7 +17,7 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class flipkartShopping {
-    WebDriver driver;
+    private WebDriver driver;
     ChromeOptions chromeOptions;
     String url ="https://www.flipkart.com/";
 
@@ -26,13 +26,13 @@ public class flipkartShopping {
         chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(chromeOptions);
+    }
+    @Test(priority = 1)
+    public void shop(){
         driver.get(url);
         driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-    }
-    @Test(priority = 1)
-    public void shop(){
         try {
             if(driver.findElement(By.xpath("//input[@type='text' and @class='_2IX_2- VJZDxU']")).isDisplayed()) {
                 driver.findElement(By.xpath("//button[@class='_2KpZ6l _2doB4z']")).click();

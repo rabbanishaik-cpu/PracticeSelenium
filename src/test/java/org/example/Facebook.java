@@ -15,22 +15,27 @@ import java.sql.Driver;
 import java.sql.SQLOutput;
 import java.time.Duration;
 
-public class Facebook {
-    WebDriver driver;
-    ChromeOptions chromeOptions;
-    String fbUrl="https://www.fb.com/";
-    String facebookurl="https://www.facebook.com/";
-    @BeforeTest
-    public void launchBrowser(){
-        chromeOptions=new ChromeOptions();
-        chromeOptions.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(chromeOptions);
-        driver.get(fbUrl);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.manage().window().maximize();
-    }
+public class Facebook extends TestBase{
+//    WebDriver driver;
+//    ChromeOptions chromeOptions;
+//    String fbUrl="https://www.fb.com/";
+//    String facebookurl="https://www.facebook.com/";
+//    @BeforeTest
+//    public void launchBrowser(){
+//        chromeOptions=new ChromeOptions();
+//        chromeOptions.addArguments("--remote-allow-origins=*");
+//        driver = new ChromeDriver(chromeOptions);
+//        driver.get(fbUrl);
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//        driver.manage().window().maximize();
+//    }
     @Test
     public void facebookSignUp(){
+        String fbUrl="https://www.fb.com/";
+        String facebookurl="https://www.facebook.com/";
+        driver.get(fbUrl);
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+//        driver.manage().window().maximize();
         try {
             String currentUrl = driver.getCurrentUrl();
             Assert.assertEquals(currentUrl, facebookurl,"No Redirection happened");
@@ -60,8 +65,8 @@ public class Facebook {
             e.printStackTrace();
         }
     }
-    @AfterTest
-    public void closeBrowser(){
-        driver.quit();
-    }
+//    @AfterTest
+//    public void closeBrowser(){
+//        driver.quit();
+//    }
 }
